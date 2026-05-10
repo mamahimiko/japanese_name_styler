@@ -11,13 +11,15 @@ export async function fetchLanguages() {
 
     try {
         const sourceLanguages = await deeplClient.getSourceLanguages();
-        for (let i = 0; i < sourceLanguages.length; i++) {
-            const lang = sourceLanguages[i];
+        sourceLanguages.forEach(lang => {
             console.log(`${lang.name} (${lang.code})`);
-            return sourceLanguages
-        }
+        });
+
+        return sourceLanguages;
+
     } catch (error) {
-        console.log("error!")
+        console.error("fetchLanguages error:", error);
+        return []
     }
 
 }
