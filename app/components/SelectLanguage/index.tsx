@@ -1,10 +1,19 @@
 "use client"
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { fetchLanguages } from '@/app/action';
+import { SelectChangeEvent } from "@mui/material";
+
+type LanguageProps = {
+    name: string,
+    code: string
+    selectCode: (code: string) => void
+}
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,62 +28,53 @@ const MenuProps = {
     },
 };
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-];
 
+export default function SelectLanguage({ code, selectCode }: LanguageProps) {
+    const [languages, setlanguages] = useState<LanguageProps[]>([])
 
-export default function SelectCountry() {
-    const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    useEffect(() => {
+        const loadLanguage = async () => {
+            const data = await fetchLanguages();
+            if (data) {
+                setlanguages(data)
+            }
+        }
+        loadLanguage()
+    }, []);
 
-    const handleChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setPersonName(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
+    const handleChange = (event: SelectChangeEvent) => {
+        selectCode(event.target.value);
     };
+
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 150, mt: 3 }}>
+            <FormControl sx={{ width: { xs: 150 } }}>
                 <Select
-                    multiple
                     displayEmpty
-                    value={personName}
+                    value={code}
                     onChange={handleChange}
                     input={<OutlinedInput />}
                     renderValue={(selected) => {
                         if (selected.length === 0) {
-                            return <em>Placeholder</em>;
+                            return <em>English</em>;
                         }
 
-                        return selected.join(', ');
+                        const foundLanguage = languages.find((language) => language.code === selected)
+                        return foundLanguage?.name || " ";
                     }}
                     MenuProps={MenuProps}
                     inputProps={{ 'aria-label': 'Without label' }}
                 >
                     <MenuItem disabled value="">
-                        <em>Placeholder</em>
+                        <em>Language</em>
                     </MenuItem>
-                    {names.map((name) => (
+                    {languages.map((language) => (
                         <MenuItem
-                            key={name}
-                            value={name}
+                            key={language.code}
+                            value={language.code}
                         >
-                            {name}
+                            {language.name}
                         </MenuItem>
                     ))}
                 </Select>

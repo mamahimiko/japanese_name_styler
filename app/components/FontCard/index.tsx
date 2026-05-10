@@ -5,42 +5,71 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import { convertToHiragana } from '@/app/data/data';
 
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-);
+type cardProps = {
+    name: string,
+    fontName: string,
+    fontClass: string,
+    fontDescription: string,
+    url: string
+    type: string
+}
 
-const card = (
-    <React.Fragment>
-        <CardContent>
-            <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-                Word of the Day
-            </Typography>
-            <Typography variant="h5" component="div">
-                be{bull}nev{bull}o{bull}lent
-            </Typography>
-            <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>adjective</Typography>
-            <Typography variant="body2">
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-            </Typography>
-        </CardContent>
-        <CardActions>
-            <Button size="small">Learn More</Button>
-        </CardActions>
-    </React.Fragment>
-);
 
-export default function FontCard() {
+
+
+export default function FontCard({ name, fontName, fontClass, fontDescription, url, type }: cardProps) {
+
+
     return (
         <Box sx={{ minWidth: 275 }}>
-            <Card variant="outlined">{card}</Card>
-        </Box>
+            <Card variant="outlined">
+                <Box sx={{
+                    minWidth: 275,
+                    minHeight: 150,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    p: 2,
+                }}
+                >
+                    <Typography variant="h3" className={fontClass} component="div"
+                        sx={{
+                            fontSize: {
+                                xs: '3rem',
+                                sm: '2.5rem',
+                                md: '3rem',
+                            },
+                            textAlign: 'center',
+                            wordBreak: 'break-word',
+                            lineHeight: 1.2
+                        }}
+                    >
+                        {type === "Katakana" ?
+                            (<span className={fontClass}>{name}</span>)
+                            :
+                            (<span className={fontClass}>
+                                {convertToHiragana(name)}
+                            </span>)
+                        }
+
+                    </Typography>
+                </Box>
+                <CardContent sx={{ height: 130 }}>
+
+                    <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>{fontName}</Typography>
+                    <Typography variant="body2">
+                        {fontDescription}
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Link href={url}>
+                        <Button size="small">Get Font</Button>
+                    </Link>
+                </CardActions>
+            </Card >
+        </Box >
     );
 }
