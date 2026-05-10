@@ -9,6 +9,11 @@ import Select from '@mui/material/Select';
 import { fetchLanguages } from '@/app/action';
 import { SelectChangeEvent } from "@mui/material";
 
+interface LanguageItem {
+    name: string;
+    code: string;
+}
+
 type LanguageProps = {
     name: string,
     code: string
@@ -30,13 +35,13 @@ const MenuProps = {
 
 
 export default function SelectLanguage({ code, selectCode }: LanguageProps) {
-    const [languages, setlanguages] = useState<LanguageProps[]>([])
+    const [languages, setlanguages] = useState<LanguageItem[]>([])
 
     useEffect(() => {
         const loadLanguage = async () => {
             const data = await fetchLanguages();
             if (data) {
-                setlanguages(data)
+                setlanguages([...data] as LanguageItem[]);
             }
         }
         loadLanguage()
