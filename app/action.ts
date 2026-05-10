@@ -29,7 +29,7 @@ export async function translation(name: string, code: string) {
     }
     const deeplClient = new deepl.DeepLClient(authKey);
     try {
-        const result = await deeplClient.translateText(name, code, "ja");
+        const result = await deeplClient.translateText(name, code as deepl.SourceLanguageCode || null, "ja");
         console.log(result)
         return result
 

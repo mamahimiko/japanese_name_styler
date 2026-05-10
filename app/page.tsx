@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import InputBar from "./components/InputBar";
 import CardSection from "./components/CardSection";
 import SelectLanguage from "./components/SelectLanguage";

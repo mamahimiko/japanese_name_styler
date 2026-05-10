@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { convertToHiragana } from '@/app/data/data';
-import { red } from '@mui/material/colors';
 
 type cardProps = {
     name: string,
