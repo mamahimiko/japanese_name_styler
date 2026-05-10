@@ -16,7 +16,8 @@ export const fontsData = [
         name: "Hina Mincho",
         url: "https://fonts.google.com/specimen/Hina+Mincho",
         class: hinaMincho.className,
-        background: "",
+        backgroundColor: "#f7e6e7",
+        textColor: "#640A37",
         description: "A delicate, old-style Mincho font with a nostalgic and elegant atmosphere."
     },
     {
@@ -24,7 +25,8 @@ export const fontsData = [
         name: "Dela Gothic One",
         url: "https://fonts.google.com/specimen/Dela+Gothic+One",
         class: dela.className,
-        background: "",
+        backgroundColor: "#e65916",
+        textColor: "#1F2937",
         description: "A flat, ultra-thick Gothic font that provides a heavy visual impact and stability."
     },
     {
@@ -32,15 +34,16 @@ export const fontsData = [
         name: "Yusei Magic",
         url: "https://fonts.google.com/specimen/Yusei+Magic",
         class: yusei.className,
-        background: "",
+        backgroundColor: "#FFEE00",
+        textColor: "#231816",
         description: "A unique hand-drawn font inspired by the look of letters written with a marker."
-    },
-    {
+    }, {
         japanese: "Katakana",
         name: "Train One",
         url: "https://fonts.google.com/specimen/Train+One",
         class: train.className,
-        background: "",
+        backgroundColor: "#F7F7F7",
+        textColor: "#088E31",
         description: "A decorative font featuring double-line strokes that give a sense of movement."
     },
     {
@@ -48,7 +51,8 @@ export const fontsData = [
         name: "Shippori Mincho",
         url: "https://fonts.google.com/specimen/Shippori+Mincho",
         class: shippori.className,
-        background: "",
+        backgroundColor: "#D6D61D",
+        textColor: "#111111",
         description: "A beautiful, traditional Mincho font designed for high-quality readability and grace."
     },
     {
@@ -56,7 +60,8 @@ export const fontsData = [
         name: "Cherry Bomb One",
         url: "https://fonts.google.com/specimen/Cherry+Bomb+One",
         class: cherry.className,
-        background: "",
+        backgroundColor: "#FFFEFB",
+        textColor: "#AA303F",
         description: "A pop and energetic font with thick, rounded shapes that look like they might burst."
     },
     {
@@ -64,7 +69,8 @@ export const fontsData = [
         name: "Darumadrop One",
         url: "https://fonts.google.com/specimen/Darumadrop+One",
         class: darumadrop.className,
-        background: "",
+        backgroundColor: "#DA0002",
+        textColor: "#D0C3B2",
         description: "A playful, hand-drawn style font with a slightly bouncy and casual feel."
     },
     {
@@ -72,7 +78,7 @@ export const fontsData = [
         name: "Rock 3D",
         url: "https://fonts.google.com/specimen/Rock+3D",
         class: rock3d.className,
-        background: "",
+        backgroundColor: "#FFFFFF",
+        textColor: "##828282",
         description: "A bold, three-dimensional font that creates a powerful, stony texture."
-    }
-]
+    }]

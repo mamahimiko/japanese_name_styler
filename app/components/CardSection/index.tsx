@@ -34,7 +34,7 @@ const CardSection = ({ translatedName }: cardSectionProps) => {
                     </Typography>
                     <Stack direction={{ xs: "column", md: "row" }} spacing={2} >
                         {fontsData && fontsData.filter((font) => font.japanese === section.name).map((font, index) => (
-                            <FontCard key={index} name={translatedName} fontName={font.name} fontClass={font.class} fontDescription={font.description} url={font.url} type={font.japanese} />
+                            <FontCard key={index} name={translatedName} fontName={font.name} fontClass={font.class} fontDescription={font.description} url={font.url} type={font.japanese} backgroundColor={font.backgroundColor} textColor={font.textColor} />
                         ))
                         }
                     </Stack>

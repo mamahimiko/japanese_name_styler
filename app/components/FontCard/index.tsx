@@ -7,26 +7,31 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { convertToHiragana } from '@/app/data/data';
+import { red } from '@mui/material/colors';
 
 type cardProps = {
     name: string,
     fontName: string,
     fontClass: string,
     fontDescription: string,
-    url: string
-    type: string
+    url: string,
+    type: string,
+    backgroundColor: string,
+    textColor: string
 }
 
 
 
 
-export default function FontCard({ name, fontName, fontClass, fontDescription, url, type }: cardProps) {
+export default function FontCard({ name, fontName, fontClass, fontDescription, url, type, backgroundColor, textColor }: cardProps) {
 
 
     return (
         <Box sx={{ minWidth: 275 }}>
             <Card variant="outlined">
                 <Box sx={{
+                    backgroundColor,
+                    color: textColor,
                     minWidth: 275,
                     minHeight: 150,
                     display: 'flex',
@@ -44,16 +49,16 @@ export default function FontCard({ name, fontName, fontClass, fontDescription, u
                             },
                             textAlign: 'center',
                             wordBreak: 'break-word',
-                            lineHeight: 1.2
+                            lineHeight: 1.2,
                         }}
                     >
-                        {type === "Katakana" ?
-                            (<span className={fontClass}>{name}</span>)
-                            :
-                            (<span className={fontClass}>
+                        {type === "Katakana" ? (
+                            <span className={fontClass}>{name}</span>
+                        ) : (
+                            <span className={fontClass}>
                                 {convertToHiragana(name)}
-                            </span>)
-                        }
+                            </span>
+                        )}
 
                     </Typography>
                 </Box>
