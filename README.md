@@ -6,7 +6,7 @@ Users can enter their name in different languages, choose a source language, and
 
 The title's "Onamae" means "Name" in Japanese! 
 
----
+
 
 ## Features
 
@@ -17,7 +17,7 @@ The title's "Onamae" means "Name" in Japanese!
 * Built with TypeScript and MUI
 * Uses React state management and async API handling
 
----
+
 
 ## Tech Stack
 
