@@ -38,9 +38,8 @@ const CardSection = ({ translatedName }: cardSectionProps) => {
                             {fontsData &&
                                 fontsData.filter((font) => font.japanese === section.name)
                                     .map((font, index) => (
-                                        <Grid size={3}>
+                                        <Grid size={3} key={index}>
                                             <FontCard
-                                                key={index}
                                                 name={translatedName}
                                                 fontName={font.name}
                                                 fontClass={font.class}
