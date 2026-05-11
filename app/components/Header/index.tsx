@@ -1,9 +1,20 @@
-import styles from "./header.module.css"
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 const Header = () => {
     return (
-        <header className={styles.header}>
-            <h1 className={styles.header__title}>oNAMaE Styler</h1>
-        </header>
+        <Box component="section" sx={{ p: 2, textAlign: "center" }}>
+            <Typography
+                variant="h1"
+                gutterBottom
+                sx={{
+                    fontSize: { xs: '1.5rem', md: '2.5rem' },
+                    fontWeight: 800,
+                    letterSpacing: '-0.02em',
+                }}
+            >
+                oNAMaE Styler
+            </Typography>
+        </Box>
     )
 }
 

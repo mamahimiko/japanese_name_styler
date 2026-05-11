@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Grid';
 import FontCard from '../FontCard';
 import { fontsData } from '@/app/data/fontData';
 
@@ -32,12 +32,30 @@ const CardSection = ({ translatedName }: cardSectionProps) => {
                     <Typography variant="body2" gutterBottom>
                         {section.description}
                     </Typography>
-                    <Stack direction={{ xs: "column", md: "row" }} spacing={2} >
-                        {fontsData && fontsData.filter((font) => font.japanese === section.name).map((font, index) => (
-                            <FontCard key={index} name={translatedName} fontName={font.name} fontClass={font.class} fontDescription={font.description} url={font.url} type={font.japanese} backgroundColor={font.backgroundColor} textColor={font.textColor} />
-                        ))
-                        }
-                    </Stack>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <Grid container spacing={2} columns={{ xs: 2, md: 6, lg: 12 }}>
+
+                            {fontsData &&
+                                fontsData.filter((font) => font.japanese === section.name)
+                                    .map((font, index) => (
+                                        <Grid size={3}>
+                                            <FontCard
+                                                key={index}
+                                                name={translatedName}
+                                                fontName={font.name}
+                                                fontClass={font.class}
+                                                fontDescription={font.description}
+                                                url={font.url}
+                                                type={font.japanese}
+                                                backgroundColor={font.backgroundColor}
+                                                textColor={font.textColor}
+                                            />
+                                        </Grid>
+                                    ))
+                            }
+
+                        </Grid>
+                    </Box>
                 </Box>
             ))}
         </Box>

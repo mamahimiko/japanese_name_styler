@@ -29,7 +29,6 @@ export default function Home() {
     setLanguageCode(code)
   }
 
-
   const handleClick = async () => {
 
     const result = await translation(name, languageCode)
@@ -42,23 +41,30 @@ export default function Home() {
 
   return (
     <div>
-      <Paper>
-        <Container
-          maxWidth="md"
-          sx={{
-            minHeight: '60vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            textAlign: "center",
-            gap: 4,
-          }}>
+      <Container
+        maxWidth="md"
+        sx={{
+          minHeight: '60vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          textAlign: "center",
+          gap: 4,
+        }}>
 
-          {!isresult ? (
-            <Fade in={!isresult} timeout={500}>
-              <Box>
+        {!isresult ? (
+          <Fade in={!isresult} timeout={500}>
+            <Box sx={{ width: "100%", maxWidth: "800px", mx: "auto" }}>
+              <Paper elevation={3}
+                sx={{
+                  p: { xs: 3, md: 5 },
+                  borderRadius: 2,
+                }}>
                 <Typography variant="h3" gutterBottom>
-                  Hello, what is your name?
+                  Discover Your Name in Japanese!
+                </Typography>
+                <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+                  Enter your name and select your language to see how it looks in Katakana and Hiragana.
                 </Typography>
                 <Stack
                   spacing={{ xs: 1, sm: 2 }}
@@ -71,24 +77,36 @@ export default function Home() {
                   <InputBar name={name} inputName={handleChangeName} />
                   <SelectLanguage name={languageName} code={languageCode} selectCode={handleChangeLanguage} />
                 </Stack>
+                <Typography variant="caption" color="text.secondary" sx={{ mb: 4 }}>
+                  *Please enter your name using the English alphabet. (Chinese characters is not supported)
+                </Typography>
                 <Box sx={{ p: 3 }}>
                   <Button size="large" variant="contained" onClick={handleClick}
                     sx={{
                       width: 'fit-content',
                       alignSelf: 'center'
                     }}>
-                    Enter
+                    Create My Name
                   </Button>
                 </Box>
-              </Box>
-            </Fade>
-          ) : (
-            <>
-              <Fade in={isresult} timeout={800}>
-                <Box>
+              </Paper>
+            </Box>
+          </Fade>
+        ) : (
+          <>
+            <Fade in={isresult} timeout={800}>
+              <Box sx={{ width: "100%", maxWidth: "800px", mx: "auto" }}>
+                <Paper elevation={3}
+                  sx={{
+                    p: { xs: 3, md: 5 },
+                    borderRadius: 2,
+                  }}>
                   <Box>
-
-                    <Typography variant="h4" gutterBottom>
+                    <Typography variant="h4" gutterBottom
+                      sx={{
+                        fontSize: { xs: '1.5rem', md: '2.5rem' }
+                      }}>
+                      {name}!<br />
                       Your Japanese signature is ready!
                     </Typography>
                   </Box>
@@ -130,13 +148,13 @@ export default function Home() {
                       </Box>
                     </Box>
                   </Fade>
-                </Box>
-              </Fade>
-            </>
-          )}
+                </Paper>
+              </Box>
+            </Fade>
+          </>
+        )}
 
-        </Container>
-      </Paper>
+      </Container>
       {
         !isresult ? (
           <></>
